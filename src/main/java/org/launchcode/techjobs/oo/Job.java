@@ -98,7 +98,7 @@ public class Job {
 
     @Override
     public String toString() {
-        Object[] fields = new Object[]{this.employer,this.location, this.positionType, this.coreCompetency};
+        JobField[] fields = new JobField[]{this.employer, this.location, this.positionType, this.coreCompetency};
         int nullCheck = 0;
         for (Object field: fields){
             if (field == null){
