@@ -117,15 +117,15 @@ public class Job {
         String aCoreCompetency = this.coreCompetency.toString();
 
         return "\nID: " + this.id +
-                "\nName: " + checkFieldStringNull(aName) +
-                "\nEmployer: " + checkFieldStringNull(aEmployer) +
-                "\nLocation: " + checkFieldStringNull(aLocation) +
-                "\nPosition Type: " + checkFieldStringNull(aPositionType) +
-                "\nCore Competency: "+ checkFieldStringNull(aCoreCompetency) + "\n";
+                "\nName: " + checkFieldStringForData(aName) +
+                "\nEmployer: " + checkFieldStringForData(aEmployer) +
+                "\nLocation: " + checkFieldStringForData(aLocation) +
+                "\nPosition Type: " + checkFieldStringForData(aPositionType) +
+                "\nCore Competency: "+ checkFieldStringForData(aCoreCompetency) + "\n";
     }
 
-    public static String checkFieldStringNull (String inputString){
-        if(inputString == null){
+    public static String checkFieldStringForData (String inputString){
+        if(inputString == null || inputString.equals("")){
             inputString = "Data not available";
         }
         return inputString;
