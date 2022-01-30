@@ -1,10 +1,11 @@
 package org.launchcode.techjobs.oo;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Job {
 
-    private int id;
+    private final int id;
     private static int nextId = 1;
 
     private String name;
@@ -93,5 +94,40 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+
+    @Override
+    public String toString() {
+        Object[] fields = new Object[]{this.employer,this.location, this.positionType, this.coreCompetency};
+        int nullCheck = 0;
+        for (Object field: fields){
+            if (field == null){
+                nullCheck++;
+            }
+        }
+
+        if(nullCheck > 0){
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        String aName = this.name;
+        String aEmployer = this.employer.toString();
+        String aLocation = this.location.toString();
+        String aPositionType = this.positionType.toString();
+        String aCoreCompetency = this.coreCompetency.toString();
+
+        return "\nID: " + this.id +
+                "\nName: " + checkFieldStringNull(aName) +
+                "\nEmployer: " + checkFieldStringNull(aEmployer) +
+                "\nLocation: " + checkFieldStringNull(aLocation) +
+                "\nPosition Type: " + checkFieldStringNull(aPositionType) +
+                "\nCore Competency: "+ checkFieldStringNull(aCoreCompetency) + "\n";
+    }
+
+    public static String checkFieldStringNull (String inputString){
+        if(inputString == null){
+            inputString = "Data not available";
+        }
+        return inputString;
     }
 }
